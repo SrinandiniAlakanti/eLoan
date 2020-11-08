@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- read user name and password from user to create account
+	     and send to usercontrollers registeruser method
+	-->
+	<div align=center>
+	<h2>New user Registration</h2>
+	<form action="registeruser" method="post">
+		
+		<div>
+			<label for="username">User Name</label>
+			<input type="text" id="username" name="username">
+		</div>
+		<div>
+			<label for="loginid">Login Id</label>
+			<input type="text" id="loginid" name="loginid">
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input type="text" id="password" name="password">
+		</div>
+		<div>
+			<label for="contact">Contact No.</label>
+			<input type="number" id="Contact" name="Contact">
+		</div>
+		<div>
+			<label for="email">Email Id</label>
+			<input type="text" id="email" name="email">
+		</div>
+		
+			<input type="submit" value="Submit" />
+	</form>
+	</div>
+</body>
+</html>

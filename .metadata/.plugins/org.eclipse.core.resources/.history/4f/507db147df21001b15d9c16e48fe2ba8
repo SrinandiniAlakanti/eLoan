@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>eLoan system</title>
+</head>
+<body>
+	<!-- write the html code to read user credentials and send it to validateservlet
+	    to validate and user servlet's registernewuser method if create new user
+	    account is selected
+	-->
+	
+<jsp:include page="header.jsp"/>
+<hr/>
+<div align=center>
+	<h2>Welcome User</h2>
+	<form action="user?action=validate" id= "login" method="post">
+	<% 
+	String username=request.getParameter("username");
+    String password=request.getParameter("password");
+	if ((username.equals("Nandini") && password.equals("test")))
+{
+    session.setAttribute("username",username);
+    response.sendRedirect("Home.jsp");
+    }
+else
+    response.sendRedirect("Error.jsp");
+%>
+	</div>
+</body>
+</html>
