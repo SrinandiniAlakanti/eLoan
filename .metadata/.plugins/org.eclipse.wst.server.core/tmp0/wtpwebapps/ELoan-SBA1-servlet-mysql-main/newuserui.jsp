@@ -7,11 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 	<!-- read user name and password from user to create account
 	     and send to usercontrollers registeruser method
 	-->
+	
+	<div align=center><h3>New user Registration</h3></div>
 	<div align=left>
-	<h2>New user Registration</h2>
 	<form action="registeruser" method="post">
 		
 		<div>
@@ -49,5 +51,6 @@
 			<input type="submit" value="Submit" />
 	</form>
 	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

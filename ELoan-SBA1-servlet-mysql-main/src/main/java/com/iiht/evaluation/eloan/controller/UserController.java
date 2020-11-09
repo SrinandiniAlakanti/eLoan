@@ -14,11 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.iiht.evaluation.eloan.dao.ConnectionDao;
 import com.iiht.evaluation.eloan.model.ApprovedLoan;
 import com.iiht.evaluation.eloan.model.LoanInfo;
 import com.iiht.evaluation.eloan.model.User;
+import com.mysql.cj.xdevapi.Result;
 import com.mysql.cj.xdevapi.Statement;
 
 
@@ -97,13 +99,17 @@ private ConnectionDao connDao;
 	}
 	private String validate(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		/* write the code to validate the user */
-  		
+		HttpSession session=request.getSession();
+		String loginid = request.getParameter("loginid");
 		User user=new User();
 		user.setUsername(request.getParameter("loginid"));
-		user.setUsername(request.getParameter("password"));
-		request.setAttribute("msg", "Logged in Successfully");
-		return "index.jsp";
-			}
+		user.setPassword(request.getParameter("password"));
+		session.setAttribute( "userName", loginid); 
+		String pageToBeDisplayed = connDao.validateuser(user);
+		return pageToBeDisplayed;
+	}
+	
+		
 	private String placeloan(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 	/* write the code to place the loan information */
@@ -134,13 +140,16 @@ private ConnectionDao connDao;
 	private String registerUser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		// TODO Auto-generated method stub
 		/* write the code to redirect page to read the user details */
-		return "newuserui.jsp";
+		return null;
 	}
 	private String registernewuser(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		// TODO Auto-generated method stub
 		/* write the code to create the new user account read from user 
 		   and return to index page */
 		
+		User user = new User();
+		user.setUsername(request.getParameter("loginId"));
+		user.setPassword(request.getParameter("password"));
 		return null;
 	}
 	
