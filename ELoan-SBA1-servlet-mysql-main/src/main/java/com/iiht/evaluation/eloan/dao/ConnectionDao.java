@@ -56,12 +56,12 @@ public class ConnectionDao {
 	pst.setString(1,Apploaninfo.getApplno());
 	pst.setString(2, Apploaninfo.getPurpose());
 	pst.setInt(3, Apploaninfo.getAmtrequest());
-	pst.setString(2, Apploaninfo.getDoa());
-	pst.setString(2, Apploaninfo.getBstructure());
-	pst.setString(2, Apploaninfo.getBindicator());
-	pst.setString(2, Apploaninfo.getAddress());
-	pst.setString(2, Apploaninfo.getEmail());
-	pst.setString(2, Apploaninfo.getMobile());
+	pst.setString(4, Apploaninfo.getDoa());
+	pst.setString(5, Apploaninfo.getBstructure());
+	pst.setString(6, Apploaninfo.getBindicator());
+	pst.setString(7, Apploaninfo.getAddress());
+	pst.setString(8, Apploaninfo.getEmail());
+	pst.setString(9, Apploaninfo.getMobile());
 	int k= pst.executeUpdate();
 	return k;
 	}
@@ -93,6 +93,9 @@ public class ConnectionDao {
 				throw new SQLException(e);
 			}
 	}
+	
+	
+	
 }
 		
 		
