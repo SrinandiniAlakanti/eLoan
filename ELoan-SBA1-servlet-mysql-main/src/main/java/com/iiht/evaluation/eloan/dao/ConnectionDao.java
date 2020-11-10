@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class ConnectionDao {
 	PreparedStatement pst = conn.prepareStatement(sql);
 	pst.setString(1,Apploaninfo.getApplno());
 	pst.setString(2, Apploaninfo.getPurpose());
-	pst.setInt(3, Apploaninfo.getAmtrequest());
+	pst.setDouble(3, Apploaninfo.getAmtrequest());
 	pst.setString(4, Apploaninfo.getDoa());
 	pst.setString(5, Apploaninfo.getBstructure());
 	pst.setString(6, Apploaninfo.getBindicator());
@@ -90,35 +91,8 @@ public class ConnectionDao {
 		}
 			
 			return pageToBeDisplayed;
-		}	
-		
-		/*ConnectionDao conn=new ConnectionDao("jdbc:mysql://localhost:3306/eloan", "root", "root");
-		Connection con;
-		try {
-			con = conn.connect();
-			String sql="Select * from user where userid=? and password=?";
-			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setString(1, user.getUsername());
-			ResultSet rs = pst.executeQuery();
-			if(rs.next())
-			{
-				if(user.getPassword().equals(rs.getString(2)))
-				{
-					if("admin".equals(rs.getString(3)))
-					{
-						return "admin";
-					}
-					else if("user".equals(rs.getString(3)))
-					{
-						return "user";
-					}
-				}
-			}
-				else return "incorrect credentials";
-			}
-			 catch (SQLException e) {
-			e.printStackTrace();}*/
-		
+		}		
+			
 		
 	public int userlogin(User user) throws SQLException {	
 	Connection connection = connect();
@@ -130,6 +104,27 @@ public class ConnectionDao {
 	return rs;
 }	
 	
+	public List<LoanInfo> listAll() throws SQLException {
+		List<LoanInfo> loans=new ArrayList<LoanInfo>();
+			
+		Connection connection = connect();
+		String sql = "select * from loaninfo;";
+		PreparedStatement st = connection.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+	//appl_no,loan_desc,amount_requested,appl_date			
+				while(rs.next()) {
+					LoanInfo loan = new LoanInfo();
+					loan.setApplno(rs.getString(1));
+					loan.setPurpose(rs.getString(2));
+					loan.setAmtrequest(Double.parseDouble(rs.getString(3)));
+					loan.setDoa(rs.getString(4));
+					loan.setStatus(rs.getString(5));
+					loan.setEmail(rs.getString(6));
+					loan.setMobile(rs.getString(7));
+					loans.add(loan);
+				}
+				return loans;
+	}
 }
 		
 		

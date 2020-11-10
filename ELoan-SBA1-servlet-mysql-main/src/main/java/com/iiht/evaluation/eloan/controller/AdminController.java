@@ -16,11 +16,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.el.ELException;
 
 import com.iiht.evaluation.eloan.dao.ConnectionDao;
 import com.iiht.evaluation.eloan.dto.LoanDto;
 import com.iiht.evaluation.eloan.model.ApprovedLoan;
 import com.iiht.evaluation.eloan.model.LoanInfo;
+import com.iiht.evaluation.eloan.model.User;
 
 
 @WebServlet("/admin")
@@ -104,7 +107,8 @@ public class AdminController extends HttpServlet {
 	private String listall(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 	/* write the code to display all the loans */
 		
-		return null;
+		request.setAttribute("loansList", connDao.listAll());
+		return "listall.jsp";
 	}
 
 	

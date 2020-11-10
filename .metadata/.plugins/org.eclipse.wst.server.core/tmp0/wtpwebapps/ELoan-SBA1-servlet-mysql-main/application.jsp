@@ -11,11 +11,12 @@
 	write the html code to accept laon info from user and send to placeloan servlet
 -->
 <body>
+<jsp:include page="header.jsp"/>
 <div align=Center><h2>Loan Application</h2></div>
 
 <div align=left>
 
-		<form action="placeloan" method="post" name="applier">
+		<form action="user?action=placeloan" name="loanapplication" method="post">
 		<div>
 			<label for="loanName">Loan Description</label>
 			<input type="text" id="loanName" name="loanName" required >
@@ -75,6 +76,6 @@
 		</div>
 	</form>
 	</div>
-
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -13,6 +13,7 @@
      Read the values from the admin servlet and cal emi and other details and send to
      to the same admin servlet to update the values in the database 
   -->
+  <jsp:include page="header.jsp"/>
 <div align=Center><h2>Loan Approval</h2></div>
 	<c:choose>
 		<c:when test="${processed}">
@@ -125,5 +126,6 @@
 				<button name="reject">Reject</button>
 			</div>
 		</form>
+		<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,50 @@
 <body>
 	<!-- write code to display all the loan details 
              which are received from the admin controllers' listall method
-	--> 
-
+	-->
+	<jsp:include page="header.jsp" />
+	<div align="right"> <a href="logout">Logout</a></div>
+	<h3 align="center">List of Loan Applications</h3>
+		<c:choose>
+			<c:when test="${loansList==null || loansList.isEmpty() }">
+				<p>No Records!</p>
+			</c:when>
+			<c:otherwise>
+				<div align=left>
+	
+							<label>Loan Application Number</label>
+							<label>Purpose</label>
+							<label>Requested Amount</label>
+						<label>Date of Application</label>
+							<label>Business Structure</label>
+							<label>Billing Indicator</label>
+							<label>Contact Address</label>
+						<label>Email</label>
+							<label>Mobile</label>
+							<label>Status</label>
+						<table>
+						<c:forEach var="loans" items="${loansList}">
+								<td>${loan.applno }</td>
+								<td>${loan.purpose }</td>
+								<td>${loan.amtrequest }</td>
+								<td>${loan.doa }</td>
+								<td>${loan.bstructure }</td>
+								<td>${loan.bindicator }</td>
+								<td>${loan.address }</td>
+								<td>${loan.email }</td>
+								<td>${loan.mobile }</td>
+								<td>${loan.status }</td>
+								<td><select name="appStatus" id="appStatus">
+									<option value="Approved">Approved</option>
+									<option value="Declined">Declined</option>
+							</select></td>
+							 <td><a href="admin?action=updatestatus&applno=${loan.applno}">Update</a></td>
+			
+						</c:forEach>
+						</table>
+				</div>
+			</c:otherwise>
+		</c:choose>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

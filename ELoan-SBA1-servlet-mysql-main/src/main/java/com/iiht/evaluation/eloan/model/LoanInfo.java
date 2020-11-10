@@ -1,9 +1,11 @@
 package com.iiht.evaluation.eloan.model;
 
+import java.time.LocalDate;
+
 public class LoanInfo {
 	private String applno;
 	 private String purpose;
-	 private int amtrequest;
+	 private double amtrequest;
 	 private String doa;
 	 private String bstructure;
 	 private String bindicator;
@@ -47,17 +49,17 @@ public class LoanInfo {
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
-	public int getAmtrequest() {
+	public double getAmtrequest() {
 		return amtrequest;
 	}
-	public void setAmtrequest(int amtrequest) {
-		this.amtrequest = amtrequest;
+	public void setAmtrequest(double d) {
+		this.amtrequest = d;
 	}
 	public String getDoa() {
 		return doa;
 	}
-	public void setDoa(String doa) {
-		this.doa = doa;
+	public void setDoa(String d) {
+		this.doa = d;
 	}
 	public String getBstructure() {
 		return bstructure;

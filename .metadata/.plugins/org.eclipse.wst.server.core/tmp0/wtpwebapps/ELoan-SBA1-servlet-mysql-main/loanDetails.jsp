@@ -1,16 +1,74 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Loan Status</title>
 </head>
 <body>
 	<!-- write the code to display the loan status information 
 	     received from usercontrollers' displaystatus method
 	-->
+	<jsp:include page="header.jsp" />
+	<div align="right">
+		<a href="index.jsp">Logout</a><br /> <a href="userhome1.jsp">User
+			home</a>
+	</div>
+	<div align="center">
+		<h3>Loan status</h3>
+	</div>
+	<div align="left">
+		<form action="user?action=displaystatus" name="appstatus" method="get">
+
+			<div>
+				<label for="applicationno">Loan Application No</label> <input
+					type="text" id="applicationno" name="applicationno"
+					value="${loan.getApplno()}" readonly>
+			</div>
+			<br />
+			<div>
+				<label for="loandescription">Loan Name</label> <input type="text"
+					id="loandescription" name="loandescription"
+					value="${loan.getLoanName()}" readonly>
+			</div>
+			<br>
+			<div>
+				<label for="amountrequested">Loan Amount</label> <input
+					type="number" id="amountrequested" name="amountrequested"
+					value="${loan.getAmtrequest()}" readonly>
+			</div>
+			<br>
+			<div>
+				<label for="applicationdate">Application Date</label> <input
+					type="date" id="applicationdate" name="applicationdate"
+					value="${loan.getDoa() }" readonly>
+			</div>
+			<br />
+			<div>
+				<label for="address">Address</label> <input type="text" id="address"
+					name="address" size="30" value="${loan.getAddress()}" readonly>
+			</div>
+			<br />
+			<div>
+				<label for="contactno">COntact No.</label> <input type="number"
+					id="contactno" name="contactno" value="${loan.getMobile()}"
+					readonly>
+			</div>
+		<br />
+	<div>
+		<label for="email">Email id</label> <input type="email" id="email"
+			size="30" name="email" value="${loan.getEmail()}" readonly>
+	</div>
+	<br/>
+	<div>
+		<label for="applicationstatus">Application Status: </label> <label
+			for="applicationstatus">${loan.getStatus() }</label>
+	</div>
+	</form>
+	</div>
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>
